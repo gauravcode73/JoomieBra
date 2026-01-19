@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Joomie</title>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
+  <style>
+    /* ================= RESET & VARIABLES ================= */
+    :root {
+      --primary-black: #1a1a1a;
+      --primary-text: #333;
+      --secondary-text: #666;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      color: var(--primary-text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(
+        120deg,
+        #ffffff,
+        #faf6f2,
+        #ffffff
+      );
+      background-size: 300% 300%;
+      animation: pageBg 20s ease infinite;
+    }
+
+    @keyframes pageBg {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ================= HEADER & NAVBAR ================= */
+    .site-header {
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      position: relative;
+    }
+
+    .logo-img { height: 45px; }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      margin-left: auto;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      color: #555;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      }
+
+      .nav-links.active { display: flex; }
+    }
+
+    /* ================= HERO ================= */
+    .about-hero {
+      position: relative;
+      padding: 80px 20px 70px;
+      text-align: center;
+      background: #f7f1eb;
+      overflow: hidden;
+    }
+
+    .about-hero::before,
+    .about-hero::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(
+        circle at 30% 30%,
+        rgba(236,210,190,0.55),
+        transparent 60%
+      );
+      animation: heroFloat 26s ease-in-out infinite;
+    }
+
+    .about-hero::after {
+      background: radial-gradient(
+        circle at 70% 70%,
+        rgba(255,255,255,0.7),
+        transparent 55%
+      );
+      animation-duration: 36s;
+    }
+
+    @keyframes heroFloat {
+      0% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(-6%,6%) scale(1.08); }
+      100% { transform: translate(0,0) scale(1); }
+    }
+
+    .about-hero * {
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 1s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .about-hero .eyebrow {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #8d6f5a;
+      margin-bottom: 16px;
+    }
+
+    .about-hero h1 {
+      font-size: 46px;
+      font-weight: 300;
+      margin-bottom: 18px;
+      line-height: 1.25;
+    }
+
+    .about-hero h1 span {
+      font-weight: 400;
+    }
+
+    .about-hero p {
+      max-width: 560px;
+      font-size: 16px;
+      color: #5a5a5a;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .about-hero {
+        padding: 65px 20px 55px;
+      }
+
+      .about-hero h1 {
+        font-size: 34px;
+      }
+    }
+
+    /* ================= ABOUT CONTENT ================= */
+    .about-content {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 50px 20px;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 50px;
+    }
+
+    .about-text h2 {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .about-text p {
+      margin-bottom: 14px;
+      color: var(--secondary-text);
+      font-size: 20px;
+    }
+
+    .btn-black {
+      display: inline-block;
+      background: var(--primary-black);
+      color: #fff;
+      padding: 13px 26px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .about-content {
+        flex-direction: column;
+      }
+    }
+
+    /* ================= VALUES ================= */
+    .values-section {
+      background: #fafafa;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1000px;
+      margin: 40px auto 0;
+    }
+
+    @media (max-width: 768px) {
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ================= FOOTER ================= */
+    footer {
+      background: #1a1a1a;
+      color: #ccc;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 50px 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #333;
+      text-align: center;
+      padding: 15px;
+      font-size: 13px;
+      color: #888;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    /* ================= WHATSAPP ================= */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 58px;
+      height: 58px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      z-index: 9999;
+    }
+
+    .whatsapp-float img { width: 30px; }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <nav class="site-nav">
+    <a href="index.html">
+      <img src="logo.png" alt="Joomie Logo" class="logo-img" />
+    </a>
+
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html">Products</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="about-hero">
+  <span class="eyebrow">Our Story</span>
+  <h1>
+    Designed to Fit You.<br />
+    <span>Crafted to Support Confidence.</span>
+  </h1>
+  <p>
+    At Joomie, we create thoughtfully engineered bras that adapt to your body,
+    enhance natural shape, and deliver all-day comfort — without compromise.
+  </p>
+</section>
+
+<section class="about-content">
+  <div class="about-image">
+    <img src="about.png" alt="Joomie Model" />
+  </div>
+  <div class="about-text">
+    <h2>Support that feels natural.</h2>
+   <p>
+  Every Joomie bra is thoughtfully crafted using premium, breathable fabrics and
+  precision engineering to deliver support that feels natural, lightweight, and
+  effortless. We focus on fit, flexibility, and durability—so each piece adapts
+  seamlessly to your body’s movement throughout the day, without digging,
+  pinching, or discomfort.
+</p>
+<p>
+  From everyday essentials designed for all-day wear to refined silhouettes that
+  elevate special moments, Joomie bras are created to feel almost invisible while
+  offering reliable support. Our designs celebrate real bodies, empowering you
+  to move freely, feel confident, and embrace comfort without compromising on
+  style.
+</p>
+
+    <a href="contact.html" class="btn-black">Get in Touch</a>
+  </div>
+</section>
+
+<section class="values-section">
+  <h2>Why Joomie?</h2>
+  <div class="values-grid">
+    <div class="value-card">
+      <i class="fas fa-heart"></i>
+      <h3>Inclusivity</h3>
+      <p>Designed for real bodies, real comfort, and real confidence.</p>
+    </div>
+    <div class="value-card">
+      <i class="fas fa-gem"></i>
+      <h3>Quality</h3>
+      <p>Premium materials that breathe, stretch, and last.</p>
+    </div>
+    <div class="value-card">
+      <i class="fas fa-shield-alt"></i>
+      <h3>Integrity</h3>
+      <p>Transparent pricing and thoughtful craftsmanship.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-box">
+      <h3>Joomie</h3>
+      <p>Premium bras designed for comfort, confidence, and everyday support.</p>
+    </div>
+
+    <div class="footer-box">
+      <h3>Contact</h3>
+      <p>
+        📍 123 Fashion Street, Mumbai, India<br />
+        📞 +91 98765 43210<br />
+        ✉️ support@joomie.com
+      </p>
+    </div>
+
+    <div class="footer-box">
+      <h3>Important Links</h3>
+      <a href="about.html">About Us</a><br />
+      <a href="index.html">Products</a><br />
+      <a href="contact.html">Contact</a><br />
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Joomie. All Rights Reserved.
+  </div>
+</footer>
+
+<a href="https://wa.me/1234567890" class="whatsapp-float" target="_blank">
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+    alt="WhatsApp"
+  />
+</a>
+
+<script>
+  function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("active");
+  }
+</script>
+
+</body>
+</html>
